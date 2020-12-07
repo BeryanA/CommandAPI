@@ -15,5 +15,11 @@ namespace CommandAPI.Controllers
         {
             return new string[] { "this", "is", "hard", "coded","!!!" };
         }
+
+        [HttpPost]
+        public ActionResult<IEnumerable<string>> Post()
+        {
+            return new string[] { "I", "am", "hard", "believer", "!!!" };
+        }
     }
 }
