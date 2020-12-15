@@ -19,17 +19,16 @@ namespace CommandAPI.Controllers
             _repository = repository;
         }
 
-        //[HttpGet]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{
-        //    return new string[] { "this", "is", "hard", "coded","!!!" };
-        //}
-
+       
         [HttpGet]
         public ActionResult<IEnumerable<Command>> GetAllCommands()
         {
-            var commandItems = _repository.GetAllCommands();
-            return Ok(commandItems);
+            var commandItem = _repository.GetAllCommands();
+            if (commandItem == null)
+            {
+                return NotFound();
+            }
+            return Ok(commandItem);
         }
 
         [HttpGet("{id}")]
@@ -44,3 +43,10 @@ namespace CommandAPI.Controllers
         }
     }
 }
+
+
+//[HttpGet]
+//public ActionResult<IEnumerable<string>> Get()
+//{
+//    return new string[] { "this", "is", "hard", "coded","!!!" };
+//}
